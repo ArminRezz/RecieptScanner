@@ -1,0 +1,23 @@
+This thing explains pyimagesearch with ocring
+    - https://pyimagesearch.com/2021/10/27/automatically-ocring-receipts-and-scans/
+
+For readerV3 link to where I found the code for the model
+    - https://cdn-lfs.huggingface.co/datasets/huggingface/documentation-images/
+      9e0dba1870fdfdca045738683aef092ee5f85a7036092c1167c26d3a75451112?response-
+      content-disposition=inline%3B+filename*%3DUTF-8%27%27donut_architecture.jpg
+      %3B+filename%3D%22donut_architecture.jpg%22%3B&response-content-type=image
+      %2Fjpeg&Expires=1726281954&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6ey
+      JEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyNjI4MTk1NH19LCJSZXNvdXJjZ
+      SI6Imh0dHBzOi8vY2RuLWxmcy5odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9odWdnaW5nZmF
+      jZS9kb2N1bWVudGF0aW9uLWltYWdlcy85ZTBkYmExODcwZmRmZGNhMDQ1NzM4NjgzYWVmM
+      DkyZWU1Zjg1YTcwMzYwOTJjMTE2N2MyNmQzYTc1NDUxMTEyP3Jlc3BvbnNlLWNvbnRlbnQ
+      tZGlzcG9zaXRpb249KiZyZXNwb25zZS1jb250ZW50LXR5cGU9KiJ9XX0_&Signature=XKS
+      LY-7zzTJuHyUJMP9KMZHZS9dvm6dg%7EbmciC4b3khqtQMWkiBfTPgQj%7EJ7SX6rOVWUK
+      sQfm7scgjGXbEQ0TniXklJ57W7ZY1AVljAoJ3KaWofnEiFO%7EOYjY0oj2tOT0vJtddAz1
+      kZ5%7EqsksDVqftV6FFb8FGgq7cMBjoVljjHNsc36rXox1HSfh93fUrmL%7EoHXtvA-cmA
+      3FTsvkXJlHbTUZChQxTtV45BEMzHv80GZiu6cHG2kobTlliBEa2tWFzbOH-KAykoe4i5kE
+      5HoNryN-xQZ99T8HEVFU6cgWRAhOd6DG8bCEiRfPMSITb7YIgE8ZNWLSecp5oJjkQegqw_
+      _&Key-Pair-Id=K3ESJI6DHPFC7
+
+Automatically Extract Data from Scanned Receipts | Intelligent Document Processing | Powered by OCR
+    - https://www.youtube.com/watch?v=lhbW8XbWNoo
