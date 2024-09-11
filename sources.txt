@@ -21,3 +21,6 @@ For readerV3 link to where I found the code for the model
 
 Automatically Extract Data from Scanned Receipts | Intelligent Document Processing | Powered by OCR
     - https://www.youtube.com/watch?v=lhbW8XbWNoo
+
+Good vid for understanding how to use tesseract ocring
+    - https://www.youtube.com/watch?v=PY_N1XdFp4w&list=PLHgvmbajt-ByUdTiXe3Epzm1k2TIZAesg&index=2

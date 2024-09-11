@@ -25,13 +25,16 @@ def process_single_image(image_path, output_dir, reader_version):
         # Process with reader.py
         text = extract_text_from_image(image_path)
         receipt_data = parse_receipt_text(text)
+
         output_file = os.path.join(output_dir, f'{os.path.splitext(os.path.basename(image_path))[0]}_reader_out.json')
         save_receipt_data(receipt_data, output_file)
         print(f"Receipt data saved for {os.path.basename(image_path)} using reader.py")
+
     elif reader_version == 'v2':
         # Process with readerV2.py
         text_v2 = readerV2_extract(image_path)
         receipt_data_v2 = readerV2_parse(text_v2)
+        
         output_file_v2 = os.path.join(output_dir, f'{os.path.splitext(os.path.basename(image_path))[0]}_readerV2_out.json')
         readerV2_save(receipt_data_v2, output_file_v2)
         print(f"Receipt data saved for {os.path.basename(image_path)} using readerV2.py")
