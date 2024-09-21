@@ -40,12 +40,10 @@ To process a specific image using both readers:
 To process all images using a specific reader version:
    ```bash
    python main.py -r v1
-   python main.py -r v2
    ```
 To process a specific image using a specific reader version:
    ```bash
    python main.py -i image_name.jpg -r v1
-   python main.py -i image_name.jpg -r v2
    ```
 
 ## AdamCodd Donut Model
