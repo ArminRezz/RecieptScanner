@@ -33,11 +33,11 @@ def extract_text_from_image(image_path):
     image = Image.open(image_path) 
 
     # Convert to grayscale
-    gray_image = image.convert('L')
+    #gray_image = image.convert('L')
 
     # Perform OCR on the grayscale image
-    text = pytesseract.image_to_string(gray_image, config=myconfig)
-    
+    text = pytesseract.image_to_string(image, config=myconfig)
+
     return text
 
 def parse_receipt_text(text):

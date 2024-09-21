@@ -1,36 +1,52 @@
 import torch
 import re
-import json
 from PIL import Image
-from transformers import pipeline
+from transformers import DonutProcessor, VisionEncoderDecoderModel
 
-# still awaiting access from Mr AdamCodd to be able to use this one
-    
-# Use a pipeline as a high-level helper
-pipe = pipeline("image-to-text", model="AdamCodd/donut-receipts-extract")
+# Set the device (GPU if available)
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-def extract_text_from_image(image_path):
+# Load the processor and model
+processor = DonutProcessor.from_pretrained("AdamCodd/donut-receipts-extract")
+model = VisionEncoderDecoderModel.from_pretrained("AdamCodd/donut-receipts-extract")
+model.to(device)
+
+def load_and_preprocess_image(image_path: str, processor):
     """
     Load an image and preprocess it for the model.
     """
     image = Image.open(image_path).convert("RGB")
-    return image  # Return the image directly for the pipeline
+    pixel_values = processor(image, return_tensors="pt").pixel_values
+    return pixel_values
 
-def parse_receipt_text(image):
+def generate_text_from_image(model, image_path: str, processor, device):
     """
-    Generate text from the image using the pipeline.
+    Generate text from an image using the trained model.
     """
-    # Use the pipeline to process the image
-    result = pipe(image)
-    decoded_text = result[0]['generated_text']  # Extract the generated text
-    return processor.token2json(decoded_text)  # Assuming you still want to convert to JSON
+    # Load and preprocess the image
+    pixel_values = load_and_preprocess_image(image_path, processor)
+    pixel_values = pixel_values.to(device)
 
-def save_receipt_data(data, file_path):
-    with open(file_path, 'w') as f:
-        json.dump(data, f, indent=4)
+    # Generate output using model
+    model.eval()
+    with torch.no_grad():
+        task_prompt = "<s_receipt>"
+        decoder_input_ids = processor.tokenizer(task_prompt, add_special_tokens=False, return_tensors="pt").input_ids
+        decoder_input_ids = decoder_input_ids.to(device)
+        
+        generated_outputs = model.generate(
+            pixel_values,
+            decoder_input_ids=decoder_input_ids,
+            max_length=model.decoder.config.max_position_embeddings, 
+            pad_token_id=processor.tokenizer.pad_token_id,
+            eos_token_id=processor.tokenizer.eos_token_id,
+            early_stopping=True,
+            bad_words_ids=[[processor.tokenizer.unk_token_id]],
+            return_dict_in_generate=True
+        )
 
-# This function combines all steps and can be called from main.py
-def process_receipt(image_path, output_path):
-    image = extract_text_from_image(image_path)
-    receipt_data = parse_receipt_text(image)
-    save_receipt_data(receipt_data, output_path)
+    # Decode generated output
+    decoded_text = processor.batch_decode(generated_outputs.sequences)[0]
+    decoded_text = decoded_text.replace(processor.tokenizer.eos_token, "").replace(processor.tokenizer.pad_token, "")
+    decoded_text = re.sub(r"<.*?>", "", decoded_text, count=1).strip()  # Remove the task start token
+    return decoded_text

@@ -1,8 +1,20 @@
 import os
 import shutil
 import argparse
+import torch 
 from reader import extract_text_from_image, parse_receipt_text, save_receipt_data
 from readerV2 import extract_text_from_image as readerV2_extract, parse_receipt_text as readerV2_parse, save_receipt_data as readerV2_save
+from transformers import DonutProcessor, VisionEncoderDecoderModel
+from readerV3 import generate_text_from_image  # Adjust import as needed
+
+# Set the device (GPU if available)
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+
+# Load the processor and model
+processor = DonutProcessor.from_pretrained("AdamCodd/donut-receipts-extract")
+model = VisionEncoderDecoderModel.from_pretrained("AdamCodd/donut-receipts-extract")
+model.to(device)
+
 # from readerV3 import process_receipt as readerV3_process
 
 # Usage:
@@ -38,20 +50,23 @@ def process_single_image(image_path, output_dir, reader_version):
         output_file_v2 = os.path.join(output_dir, f'{os.path.splitext(os.path.basename(image_path))[0]}_readerV2_out.json')
         readerV2_save(receipt_data_v2, output_file_v2)
         print(f"Receipt data saved for {os.path.basename(image_path)} using readerV2.py")
-    # elif reader_version == 'v3':
-    #     # Process with readerV3.py
-    #     output_file_v3 = os.path.join(output_dir, f'{os.path.splitext(os.path.basename(image_path))[0]}_readerV3_out.json')
-    #     readerV3_process(image_path, output_file_v3)
-    #     print(f"Receipt data saved for {os.path.basename(image_path)} using readerV3.py")
+
+    elif reader_version == 'v3':
+        extracted_text = generate_text_from_image(model, image_path, processor, device)
+        output_file = os.path.join(output_dir, f'{os.path.splitext(os.path.basename(image_path))[0]}_readerV3_out.json')
+        # Assuming you have a function to save the data
+        save_receipt_data(extracted_text, output_file)
+        print(f"Receipt data saved for {os.path.basename(image_path)} using readerV3.py")
     else:
         print(f"Invalid reader version: {reader_version}")
+
 
 def main():
     # Set up argument parser
     parser = argparse.ArgumentParser(description="Process receipt images using OCR")
     parser.add_argument("-i", "--image", help="Name of a single image file to process (optional)")
-    parser.add_argument("-r", "--reader", choices=['v1', 'v2', 'both'], default='both',
-                        help="Specify which reader version to use: v1, v2, or both (default)")
+    parser.add_argument("-r", "--reader", choices=['v1', 'v2', 'v3', 'both'], default='both',
+                        help="Specify which reader version to use: v1, v2, v3, or both (default)")
     args = parser.parse_args()
 
     # Directory paths
