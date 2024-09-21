@@ -1,4 +1,4 @@
-#### Receipt Reader 🧾
+# Receipt Reader 🧾
 
 ### Overview
 Receipt Reader is an ongoing research project focused on accurately scanning grocery items and their corresponding prices from receipts into structured data. The primary goal is to develop an intuitive interface that enables roommates to easily split grocery bills.
