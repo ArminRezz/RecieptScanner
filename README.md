@@ -45,4 +45,4 @@ To process a specific image using a specific reader version:
    ```
 
 ## AdamCodd Donut Model
-This model has been retrained on an improved version of the **AdamCodd/donut-receipts** dataset (deduplicated, manually corrected). The new license for the V2 model is **cc-by-nc-4.0**. For commercial use rights, please contact me at [adamcoddml@gmail.com](mailto:adamcoddml@gmail.com). Meanwhile, the V1 model remains available under the **MIT license** (under the v1 branch).
+This model has been retrained on an improved version of the **AdamCodd/donut-receipts** dataset (deduplicated, manually corrected). The new license for the V2 model is **cc-by-nc-4.0**. For commercial use rights, please contact him at [adamcoddml@gmail.com](mailto:adamcoddml@gmail.com). Meanwhile, the V1 model remains available under the **MIT license** (under the v1 branch).
