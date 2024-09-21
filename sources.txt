@@ -24,3 +24,5 @@ Automatically Extract Data from Scanned Receipts | Intelligent Document Processi
 
 Good vid for understanding how to use tesseract ocring
     - https://www.youtube.com/watch?v=PY_N1XdFp4w&list=PLHgvmbajt-ByUdTiXe3Epzm1k2TIZAesg&index=2
+
+Vid about ocr - https://youtu.be/oyqNdcbKhew?si=3yCDbPc15ntPLgY3
