@@ -1,4 +1,4 @@
-# Receipt Reader
+# Receipt Reader 🧾
 
 ## Overview
 Receipt Reader is an ongoing research project focused on accurately scanning grocery items and their corresponding prices from receipts into structured data. The primary goal is to develop an intuitive interface that enables roommates to easily split grocery bills.
@@ -23,6 +23,10 @@ The project includes three reader scripts and a collection of test receipt image
    pip install -r requirements.txt
 
 ## Usage
+
+## Output 
+Output will go to folder "output"
+All previous outputs are moved to prevoutputs folder when new command is run
 
 To process all images in the directory using both readers:
    ```bash
