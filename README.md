@@ -16,3 +16,33 @@ The project includes three reader scripts and a collection of test receipt image
    ```bash
    git clone https://github.com/yourusername/ReceiptReader.git
    cd ReceiptReader
+
+2. Install the required packages:
+
+   ```bash
+   pip install -r requirements.txt
+
+## Usage
+
+To process all images in the directory using both readers:
+   ```bash
+   python main.py
+   ```
+To process a specific image using both readers:
+   ```bash
+   python main.py -i image_name.jpg
+   ```
+
+To process all images using a specific reader version:
+   ```bash
+   python main.py -r v1
+   python main.py -r v2
+   ```
+To process a specific image using a specific reader version:
+   ```bash
+   python main.py -i image_name.jpg -r v1
+   python main.py -i image_name.jpg -r v2
+   ```
+
+## AdamCodd Donut Model
+This model has been retrained on an improved version of the **AdamCodd/donut-receipts** dataset (deduplicated, manually corrected). The new license for the V2 model is **cc-by-nc-4.0**. For commercial use rights, please contact me at [adamcoddml@gmail.com](mailto:adamcoddml@gmail.com). Meanwhile, the V1 model remains available under the **MIT license** (under the v1 branch).
