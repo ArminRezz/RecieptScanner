@@ -1,6 +1,6 @@
-# Receipt Reader 🧾
+#### Receipt Reader 🧾
 
-## Overview
+### Overview
 Receipt Reader is an ongoing research project focused on accurately scanning grocery items and their corresponding prices from receipts into structured data. The primary goal is to develop an intuitive interface that enables roommates to easily split grocery bills.
 
 ## Current Implementation
@@ -10,7 +10,7 @@ The project includes three reader scripts and a collection of test receipt image
 2. **Reader Script 2**: Currently not useful; serves as a testing framework.
 3. **Reader Script 3**: Implements the AdamCodd DonutModel from Hugging Face, specifically designed for receipt data extraction in order to research how we could make our own model
 
-## Installation
+### Installation
 
 1. Clone the repository:
    ```bash
@@ -22,11 +22,11 @@ The project includes three reader scripts and a collection of test receipt image
    ```bash
    pip install -r requirements.txt
 
-## Usage
-
 ## Output 
 Output will go to folder "output"
 All previous outputs are moved to prevoutputs folder when new command is run
+
+## Usage
 
 To process all images in the directory using both readers:
    ```bash
