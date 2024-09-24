@@ -70,7 +70,7 @@ def main():
     args = parser.parse_args()
 
     # Directory paths
-    image_dir = r"C:\Users\arnoj\Documents\RecieptReader\recieptreader\images"
+    image_dir = r"..\images"
     output_dir = os.path.abspath(os.path.join(image_dir, "..", "output"))
     prev_output_dir = os.path.abspath(os.path.join(image_dir, "..", "prevoutputs"))
 

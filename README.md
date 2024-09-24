@@ -48,3 +48,20 @@ To process a specific image using a specific reader version:
 
 ## AdamCodd Donut Model For readerV3
 This model has been retrained on an improved version of the **AdamCodd/donut-receipts** dataset (deduplicated, manually corrected). The new license for the V2 model is **cc-by-nc-4.0**. For commercial use rights, please contact him at [adamcoddml@gmail.com](mailto:adamcoddml@gmail.com). Meanwhile, the V1 model remains available under the **MIT license** (under the v1 branch).
+
+
+
+## Issues
+ - get the hugging face model working 
+ - improve UI/UX
+ - have data preprocessing
+   - make sure images are named uniformly
+   - images are black and white (should already be)
+- have data post processing
+   - text extraction output should be put into a excel sheet
+- add Justin and Charles to github
+- fix spelling erros
+- don't use absolute paths and logins
+- Have working draft by Oct 4th
+
+
